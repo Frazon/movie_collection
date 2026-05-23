@@ -1,0 +1,22 @@
+.container {
+  padding: 24px;
+}
+
+zxing-scanner {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 24px auto;
+}
+
+.result {
+  text-align: center;
+}
+
+.success {
+  color: green;
+}
+
+.danger {
+  color: red;
+}

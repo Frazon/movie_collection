@@ -50,4 +50,10 @@ public class MovieService {
     public void deleteMovie(Long id) {
         movieRepository.deleteById(id);
     }
+
+    public boolean existsByBarcode(String barcode) {
+
+        return movieRepository.existsByBarcode(barcode);
+    }
+
 }

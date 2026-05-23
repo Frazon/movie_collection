@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.movie.moviecollection.dto.CreateMovieRequest;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -41,4 +42,10 @@ public class MovieController {
     public void deleteMovie(@PathVariable Long id) {
         movieService.deleteMovie(id);
     }
+
+    @GetMapping("/exists")
+    public boolean existsMovie(@RequestParam String barcode){
+        return movieService.existsByBarcode(barcode);
+    }
+
 }

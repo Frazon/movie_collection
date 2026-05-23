@@ -39,4 +39,11 @@ export class MovieService {
     );
   }
 
+  existsMovie(barcode: string): Observable<boolean>{
+
+    return this.http.get<boolean>(
+      `${this.apiUrl}/movies/exists?barcode=${barcode}`
+    );
+  }
+
 }

@@ -9,6 +9,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
     <nav>
       <a routerLink="/">Buscar Filmes</a>
       <a routerLink="/collection">Minha Coleção</a>
+      <a routerLink="/scanner">Scanner</a>
     </nav>
 
     <router-outlet />

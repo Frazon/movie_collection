@@ -9,4 +9,6 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     Optional<Movie> findByBarcode(String barcode);
 
+    boolean existsByBarcode(String barcode);
+
 }
