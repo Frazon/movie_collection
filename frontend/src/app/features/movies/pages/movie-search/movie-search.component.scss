@@ -1,0 +1,36 @@
+.container {
+  padding: 24px;
+}
+
+.search-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+input {
+  padding: 8px;
+  width: 300px;
+}
+
+button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.movie-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 6px;
+}
