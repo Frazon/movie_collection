@@ -35,4 +35,27 @@ export class MovieSearchComponent {
         }
       });
   }
+
+  addMovie(movie: MovieSearchResponse) {
+
+    const request = {
+      title: movie.title,
+      barcode: crypto.randomUUID(),
+      overview: movie.overview,
+      posterUrl: movie.posterUrl,
+      releaseDate: movie.releaseDate,
+      tmdbId: movie.tmdbId
+    };
+
+    this.movieService.createMovie(request)
+      .subscribe({
+        next: () => {
+          alert('Filme adicionado com sucesso!');
+        },
+        error: (error) => {
+          console.error(error);
+          alert(error.error.message);
+        }
+      });
+  }
 }

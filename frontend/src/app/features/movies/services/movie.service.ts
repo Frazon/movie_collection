@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MovieSearchResponse } from '../models/movie-search-response.model';
+import { CreateMovieRequest } from '../models/create-movie-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,11 @@ export class MovieService {
     return this.http.get<MovieSearchResponse[]>(
       `${this.apiUrl}/tmdb/search?query=${query}`
     );
+  }
+
+  createMovie(request: CreateMovieRequest): Observable<any> {
+
+    return this.http.post(`${this.apiUrl}/movies`, request);
+
   }
 }
