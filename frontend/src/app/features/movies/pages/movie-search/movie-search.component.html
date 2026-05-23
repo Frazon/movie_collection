@@ -5,8 +5,11 @@
   <div class="search-box">
     <input type="text" [(ngModel)]="query" placeholder="Procurar filmes..." >
 
-    <button (click)="searchMovies()">
-      Buscar
+    <button (click)="searchMovies()" class="search-button">
+      <span class="spinner" *ngIf="isLoadingSearch">
+        <mat-spinner></mat-spinner>
+      </span>
+      <span *ngIf="!isLoadingSearch">Buscar</span>
     </button>
 
   </div>

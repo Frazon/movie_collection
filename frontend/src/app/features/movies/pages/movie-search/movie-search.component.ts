@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MovieService } from '../../services/movie.service';
 import { MovieSearchResponse } from '../../models/movie-search-response.model';
 import { Movie } from '../../models/movie.model';
@@ -8,13 +9,15 @@ import { Movie } from '../../models/movie.model';
 @Component({
   selector: 'app-movie-search',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatProgressSpinnerModule],
   templateUrl: './movie-search.component.html',
   styleUrls: ['./movie-search.component.scss']
 })
 export class MovieSearchComponent {
 
   private movieService = inject(MovieService);
+
+  isLoadingSearch: boolean = false;
 
   query = '';
 
@@ -45,12 +48,16 @@ export class MovieSearchComponent {
       return;
     }
 
+    this.isLoadingSearch = true;
+
     this.movieService.searchMovies(this.query)
       .subscribe({
         next: (response) => {
           this.movies = response;
+          this.isLoadingSearch = false;
         },
         error: (error) => {
+          this.isLoadingSearch = false;
           console.error(error);
         }
       });

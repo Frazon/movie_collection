@@ -34,3 +34,19 @@ button {
   width: 100%;
   border-radius: 6px;
 }
+
+.search-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 40px;
+}
+
+.spinner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
