@@ -4,6 +4,8 @@ import com.movie.moviecollection.entity.Movie;
 import com.movie.moviecollection.service.MovieService;
 import org.springframework.web.bind.annotation.*;
 
+import com.movie.moviecollection.dto.CreateMovieRequest;
+
 import java.util.List;
 
 @RestController
@@ -22,8 +24,10 @@ public class MovieController {
     }
 
     @PostMapping
-    public Movie createMovie(@RequestBody Movie movie) {
-        return movieService.createMovie(movie);
+    public Movie createMovie(
+            @RequestBody CreateMovieRequest request
+    ) {
+        return movieService.createMovie(request);
     }
 
     @GetMapping("/barcode/{barcode}")

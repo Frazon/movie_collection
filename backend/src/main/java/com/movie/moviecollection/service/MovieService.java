@@ -3,6 +3,7 @@ package com.movie.moviecollection.service;
 import com.movie.moviecollection.entity.Movie;
 import com.movie.moviecollection.repository.MovieRepository;
 import org.springframework.stereotype.Service;
+import com.movie.moviecollection.dto.CreateMovieRequest;
 
 import java.util.List;
 
@@ -19,15 +20,24 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public Movie createMovie(Movie movie) {
+    public Movie createMovie(CreateMovieRequest request) {
 
         Movie existingMovie = movieRepository
-                .findByBarcode(movie.getBarcode())
+                .findByBarcode(request.getBarcode())
                 .orElse(null);
 
-        if(existingMovie != null){
+        if (existingMovie != null) {
             throw new RuntimeException("Já existe um filme com esse código de barras.");
         }
+
+        Movie movie = new Movie();
+
+        movie.setTitle(request.getTitle());
+        movie.setBarcode(request.getBarcode());
+        movie.setOverview(request.getOverview());
+        movie.setPosterUrl(request.getPosterUrl());
+        movie.setReleaseDate(request.getReleaseDate());
+        movie.setTmdbId(request.getTmdbId());
 
         return movieRepository.save(movie);
     }

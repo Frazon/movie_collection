@@ -1,32 +1,13 @@
-package com.movie.moviecollection.entity;
+package com.movie.moviecollection.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "movies")
-public class Movie {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class CreateMovieRequest {
 
     private String title;
-
-    @Column(unique = true)
     private String barcode;
-
     private String overview;
-
-    private String releaseDate;
-
-    private Long tmdbId;
-
-    @Column(length = 1000)
     private String posterUrl;
-
-    public Long getId() {
-        return id;
-    }
+    private String releaseDate;
+    private Long tmdbId;
 
     public String getTitle() {
         return title;
@@ -34,6 +15,22 @@ public class Movie {
 
     public String getBarcode() {
         return barcode;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public String getPosterUrl() {
+        return posterUrl;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public Long getTmdbId() {
+        return tmdbId;
     }
 
     public void setTitle(String title) {
@@ -44,32 +41,16 @@ public class Movie {
         this.barcode = barcode;
     }
 
-    public String getOverview() {
-        return overview;
-    }
-
     public void setOverview(String overview) {
         this.overview = overview;
-    }
-
-    public String getPosterUrl() {
-        return posterUrl;
     }
 
     public void setPosterUrl(String posterUrl) {
         this.posterUrl = posterUrl;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
-    }
-
-    public Long getTmdbId() {
-        return tmdbId;
     }
 
     public void setTmdbId(Long tmdbId) {

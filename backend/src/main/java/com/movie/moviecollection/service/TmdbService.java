@@ -45,6 +45,7 @@ public class TmdbService {
                 : null;
 
         return new MovieSearchResponse(
+                movie.getId(),
                 movie.getTitle(),
                 movie.getOverview(),
                 movie.getRelease_date(),

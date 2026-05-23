@@ -6,8 +6,10 @@ public class MovieSearchResponse {
     private String overview;
     private String releaseDate;
     private String posterUrl;
+    private Long tmdbId;
 
     public MovieSearchResponse(
+            Long tmdbId,
             String title,
             String overview,
             String releaseDate,
@@ -17,6 +19,7 @@ public class MovieSearchResponse {
         this.overview = overview;
         this.releaseDate = releaseDate;
         this.posterUrl = posterUrl;
+        this.tmdbId = tmdbId;
     }
 
     public String getTitle() {
@@ -33,5 +36,9 @@ public class MovieSearchResponse {
 
     public String getPosterUrl() {
         return posterUrl;
+    }
+
+    public Long getTmdbId() {
+        return tmdbId;
     }
 }
