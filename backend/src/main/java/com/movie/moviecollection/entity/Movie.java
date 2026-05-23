@@ -15,6 +15,7 @@ public class Movie {
     @Column(unique = true)
     private String barcode;
 
+    @Column(columnDefinition = "TEXT")
     private String overview;
 
     private String releaseDate;

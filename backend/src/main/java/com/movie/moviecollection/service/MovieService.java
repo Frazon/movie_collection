@@ -46,4 +46,8 @@ public class MovieService {
         return movieRepository.findByBarcode(barcode)
                 .orElse(null);
     }
+
+    public void deleteMovie(Long id) {
+        movieRepository.deleteById(id);
+    }
 }

@@ -1,10 +1,30 @@
 import { Component } from '@angular/core';
-import { MovieSearchComponent } from './features/movies/pages/movie-search/movie-search.component';
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MovieSearchComponent],
-  template: '<app-movie-search />'
+  imports: [RouterOutlet, RouterLink],
+  template: `
+    <nav>
+      <a routerLink="/">Buscar Filmes</a>
+      <a routerLink="/collection">Minha Coleção</a>
+    </nav>
+
+    <router-outlet />
+  `,
+  styles: [`
+    nav {
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      background: #eee;
+    }
+
+    a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+  `]
 })
 export class AppComponent {}

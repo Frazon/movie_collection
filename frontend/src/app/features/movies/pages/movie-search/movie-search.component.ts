@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MovieService } from '../../services/movie.service';
 import { MovieSearchResponse } from '../../models/movie-search-response.model';
+import { Movie } from '../../models/movie.model';
 
 @Component({
   selector: 'app-movie-search',
@@ -18,6 +19,25 @@ export class MovieSearchComponent {
   query = '';
 
   movies: MovieSearchResponse[] = [];
+
+  collection: Movie[] = [];
+
+  constructor() {
+    this.loadCollection();
+  }
+
+  loadCollection() {
+
+    this.movieService.getMovies()
+      .subscribe({
+        next: (response) => {
+          this.collection = response;
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+  }
 
   searchMovies() {
 
@@ -51,6 +71,7 @@ export class MovieSearchComponent {
       .subscribe({
         next: () => {
           alert('Filme adicionado com sucesso!');
+          this.loadCollection();
         },
         error: (error) => {
           console.error(error);
@@ -58,4 +79,12 @@ export class MovieSearchComponent {
         }
       });
   }
+
+  isMovieInCollection(tmdbId: number): boolean {
+
+    return this.collection.some(
+      movie => movie.tmdbId === tmdbId
+    );
+  }
+
 }

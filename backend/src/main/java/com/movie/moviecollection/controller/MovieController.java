@@ -5,6 +5,8 @@ import com.movie.moviecollection.service.MovieService;
 import org.springframework.web.bind.annotation.*;
 
 import com.movie.moviecollection.dto.CreateMovieRequest;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -33,5 +35,10 @@ public class MovieController {
     @GetMapping("/barcode/{barcode}")
     public Movie getMovieBayBarcode(@PathVariable String barcode){
         return movieService.findByBarcode(barcode);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteMovie(@PathVariable Long id) {
+        movieService.deleteMovie(id);
     }
 }
