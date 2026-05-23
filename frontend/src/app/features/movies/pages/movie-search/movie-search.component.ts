@@ -1,7 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MovieService } from '../../services/movie.service';
 import { MovieSearchResponse } from '../../models/movie-search-response.model';
 import { Movie } from '../../models/movie.model';
@@ -9,13 +12,22 @@ import { Movie } from '../../models/movie.model';
 @Component({
   selector: 'app-movie-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
+  ],
   templateUrl: './movie-search.component.html',
   styleUrls: ['./movie-search.component.scss']
 })
 export class MovieSearchComponent {
 
   private movieService = inject(MovieService);
+
+  private snackBar = inject(MatSnackBar);
 
   isLoadingSearch: boolean = false;
 
@@ -77,12 +89,24 @@ export class MovieSearchComponent {
     this.movieService.createMovie(request)
       .subscribe({
         next: () => {
-          alert('Filme adicionado com sucesso!');
+          this.snackBar.open(
+            'Filme adicionado com sucesso!',
+            'Fechar',
+            {
+              duration: 3000
+            }
+          );
           this.loadCollection();
         },
         error: (error) => {
           console.error(error);
-          alert(error.error.message);
+          this.snackBar.open(
+            error.error.message,
+            'Fechar',
+            {
+              duration: 3000
+            }
+          );
         }
       });
   }

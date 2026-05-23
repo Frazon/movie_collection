@@ -2,17 +2,30 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-movie-collection',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    MatSnackBarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
+  ],
   templateUrl: './movie-collection.component.html',
   styleUrls: ['./movie-collection.component.scss']
 })
 export class MovieCollectionComponent {
 
   private movieService = inject(MovieService);
+
+  private snackBar = inject(MatSnackBar);
 
   movies: Movie[] = [];
 
@@ -35,7 +48,13 @@ export class MovieCollectionComponent {
     this.movieService.deleteMovie(id)
       .subscribe({
         next: () => {
-          alert('Filme removido com sucesso da coleçao!');
+          this.snackBar.open(
+            'Filme removido com sucesso da coleçao!',
+            'Fechar',
+            {
+              duration: 3000
+            }
+          );
           this.loadMovies();
         }
       });

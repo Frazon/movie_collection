@@ -4,26 +4,23 @@
 
   <div class="movies">
 
-    <div
-      class="movie-card"
-      *ngFor="let movie of movies"
-    >
+    <mat-card class="movie-card" *ngFor="let movie of movies" >
 
-      <img
-        *ngIf="movie.posterUrl"
-        [src]="movie.posterUrl"
-        [alt]="movie.title"
-      >
+      <img *ngIf="movie.posterUrl" [src]="movie.posterUrl" [alt]="movie.title" >
 
-      <h2>{{ movie.title }}</h2>
+      <mat-card-content>
+        <h2>{{ movie.title }}</h2>
+        <p>{{ movie.releaseDate }}</p>
+        <p>{{ movie.overview }}</p>
+      </mat-card-content>
 
-      <p>{{ movie.releaseDate }}</p>
+      <mat-card-actions>
+        <button (click)="deleteMovie(movie.id)" mat-raised-button>
+          Remover
+        </button>
+      </mat-card-actions>
 
-      <button (click)="deleteMovie(movie.id)">
-        Remover
-      </button>
-
-    </div>
+    </mat-card>
 
   </div>
 

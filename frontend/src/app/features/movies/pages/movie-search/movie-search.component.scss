@@ -9,38 +9,33 @@
 }
 
 input {
-  padding: 8px;
-  width: 300px;
-}
-
-button {
-  padding: 8px 16px;
-  cursor: pointer;
+  padding: 12px;
+  width: 320px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 .movies {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
 }
 
 .movie-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
+  height: 100%;
 }
 
-.movie-card img {
-  width: 100%;
-  border-radius: 6px;
+mat-card-content {
+  padding-top: 12px;
 }
 
-.search-button{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 130px;
-  height: 40px;
+mat-card-actions {
+  padding: 16px;
+}
+
+img {
+  height: 390px;
+  object-fit: cover;
 }
 
 .spinner{

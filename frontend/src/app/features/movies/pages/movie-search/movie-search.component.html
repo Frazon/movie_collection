@@ -5,7 +5,7 @@
   <div class="search-box">
     <input type="text" [(ngModel)]="query" placeholder="Procurar filmes..." >
 
-    <button (click)="searchMovies()" class="search-button">
+    <button (click)="searchMovies()" class="search-button" mat-raised-button>
       <span class="spinner" *ngIf="isLoadingSearch">
         <mat-spinner></mat-spinner>
       </span>
@@ -15,22 +15,26 @@
   </div>
 
   <div class="movies">
-    <div class="movie-card" *ngFor="let movie of movies">
+    <mat-card class="movie-card" *ngFor="let movie of movies">
 
       <img *ngIf="movie.posterUrl" [src]="movie.posterUrl" [alt]="movie.title">
 
-      <h2>{{ movie.title }}</h2>
-      <p>{{ movie.releaseDate }}</p>
-      <p>{{ movie.overview }}</p>
+      <mat-card-content>
+        <h2>{{ movie.title }}</h2>
+        <p>{{ movie.releaseDate }}</p>
+        <p>{{ movie.overview }}</p>
+      </mat-card-content>
 
-      <button *ngIf="!isMovieInCollection(movie.tmdbId)" (click)="addMovie(movie)">
-        Adicionar à coleção
-      </button>
+      <mat-card-actions>
+        <button *ngIf="!isMovieInCollection(movie.tmdbId)" (click)="addMovie(movie)" mat-raised-button>
+          Adicionar à coleção
+        </button>
 
-      <button *ngIf="isMovieInCollection(movie.tmdbId)" disabled>
-        Já adicionado
-      </button>
+        <button *ngIf="isMovieInCollection(movie.tmdbId)" mat-raised-button disabled>
+          Já adicionado
+        </button>
+      </mat-card-actions>
 
-    </div>
+    </mat-card>
   </div>
 </div>
