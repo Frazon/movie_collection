@@ -1,5 +1,11 @@
 .container {
   padding: 24px;
+  text-align: center;
+}
+
+.instruction {
+  margin-bottom: 20px;
+  color: #666;
 }
 
 zxing-scanner {
@@ -7,16 +13,38 @@ zxing-scanner {
   max-width: 500px;
   display: block;
   margin: 24px auto;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .result {
-  text-align: center;
+  margin-top: 24px;
 }
 
-.success {
-  color: green;
+.status-card {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  font-weight: bold;
 }
 
-.danger {
-  color: red;
+.success-card {
+  background: #d4edda;
+  color: #155724;
+}
+
+.danger-card {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 16px;
+  }
+
+  zxing-scanner {
+    max-width: 100%;
+  }
 }

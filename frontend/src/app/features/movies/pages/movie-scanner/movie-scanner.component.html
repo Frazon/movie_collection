@@ -1,19 +1,22 @@
 <div class="container">
 
   <h1>Scanner de DVDs</h1>
+  <p class="instruction">
+    Aponte a câmera para o código de barras do DVD
+  </p>
   <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
 
   <div class="result" *ngIf="scannedBarcode">
 
     <h2>Código:</h2>
     <p>{{ scannedBarcode }}</p>
-    <div *ngIf="hasMovie === true">
+    <div class="status-card success-card" *ngIf="hasMovie === true">
       <h3 class="success">
         Você já possui este DVD
       </h3>
     </div>
 
-    <div *ngIf="hasMovie === false">
+    <div class="status-card danger-card" *ngIf="hasMovie === false">
       <h3 class="danger">
         DVD não encontrado na coleção
       </h3>
