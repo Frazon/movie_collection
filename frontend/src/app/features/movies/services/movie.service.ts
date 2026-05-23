@@ -12,7 +12,7 @@ export class MovieService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'http://192.168.15.13:8080';
 
   searchMovies(query: string): Observable<MovieSearchResponse[]> {
 
