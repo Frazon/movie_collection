@@ -20,6 +20,20 @@ public class MovieService {
     }
 
     public Movie createMovie(Movie movie) {
+
+        Movie existingMovie = movieRepository
+                .findByBarcode(movie.getBarcode())
+                .orElse(null);
+
+        if(existingMovie != null){
+            throw new RuntimeException("Já existe um filme com esse código de barras.");
+        }
+
         return movieRepository.save(movie);
+    }
+
+    public Movie findByBarcode(String barcode) {
+        return movieRepository.findByBarcode(barcode)
+                .orElse(null);
     }
 }

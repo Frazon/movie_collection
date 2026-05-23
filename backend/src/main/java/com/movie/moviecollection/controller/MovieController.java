@@ -25,4 +25,9 @@ public class MovieController {
     public Movie createMovie(@RequestBody Movie movie) {
         return movieService.createMovie(movie);
     }
+
+    @GetMapping("/barcode/{barcode}")
+    public Movie getMovieBayBarcode(@PathVariable String barcode){
+        return movieService.findByBarcode(barcode);
+    }
 }

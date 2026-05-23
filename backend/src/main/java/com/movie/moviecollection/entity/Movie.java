@@ -12,6 +12,7 @@ public class Movie {
 
     private String title;
 
+    @Column(unique = true)
     private String barcode;
 
     public Long getId() {
