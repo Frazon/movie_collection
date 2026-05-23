@@ -2,16 +2,40 @@
   padding: 24px;
 }
 
+.search-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+input {
+  padding: 12px;
+  width: 320px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
 .movies {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
 }
 
 .movie-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
+  height: 100%;
+}
+
+mat-card-content {
+  padding-top: 12px;
+}
+
+mat-card-actions {
+  padding: 16px;
+}
+
+img {
+  height: 390px;
+  object-fit: cover;
 }
 
 .movie-card img {
@@ -23,4 +47,20 @@ button {
   width: 100%;
   padding: 10px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .container{
+    padding: 16px;
+  }
+
+  .movies {
+    grid-template-columns: 1fr;
+  }
+
+  .movie-card {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
 }

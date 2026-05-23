@@ -3,7 +3,12 @@
   <h1>Coleção de Filmes</h1>
 
   <div class="search-box">
-    <input type="text" [(ngModel)]="query" placeholder="Procurar filmes..." >
+    <input type="text"
+           [(ngModel)]="query"
+           placeholder="Procurar filmes..."
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off" >
 
     <button (click)="searchMovies()" class="search-button" mat-raised-button>
       <span class="spinner" *ngIf="isLoadingSearch">
