@@ -1,0 +1,25 @@
+# IntelliJ
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# Node
+frontend/node_modules/
+
+# Angular
+frontend/dist/
+
+# Java
+backend/target/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
